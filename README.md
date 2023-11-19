@@ -1,2 +1,2 @@
 # Programarea Aplicatiilor Web - Anul 2
-## Student: Cheoseaua Iulian-Gabriel
+**Student:** Cheoseaua Iulian-Gabriel
