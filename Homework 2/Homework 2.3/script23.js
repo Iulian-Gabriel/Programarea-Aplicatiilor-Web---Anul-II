@@ -42,11 +42,11 @@
         item_container.innerHTML = "";
     
         for (const item of items){
-            const itemElement = item_template.cloneNode(true);
+            const itemElement = document.importNode(item_template.content, true);
             const descriptionInput = itemElement.querySelector(".item-description");
             const completedInput = itemElement.querySelector(".item-completed");
-    
             descriptionInput.value = item.description;
+
             completedInput.checked = item.completed;
 
             descriptionInput.addEventListener("change", () =>{
