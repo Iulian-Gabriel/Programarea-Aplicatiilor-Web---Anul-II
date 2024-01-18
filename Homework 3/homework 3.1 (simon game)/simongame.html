@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simon Game</title>
+    <link rel="stylesheet" href="simongamestyle.css">
+</head>
+<body>
+    <audio id="sound" src="sounds/click.mp3"></audio>
+    <div>
+        <div onclick="panelClicked(event.currentTarget)" class="top-left-panel" id="top-left-panel">
+        </div>
+        <div onclick="panelClicked(event.currentTarget)" class="top-right-panel" id="top-right-panel">
+        </div>
+    </div>
+    <div>
+        <div onclick="panelClicked(event.currentTarget)" class="bottom-left-panel" id="bottom-left-panel">
+        </div>
+        <div onclick="panelClicked(event.currentTarget)" class="bottom-right-panel" id="bottom-right-panel">
+        </div>
+    </div>
+    <script src="simongame.js"></script>
+</body>
+</html>
