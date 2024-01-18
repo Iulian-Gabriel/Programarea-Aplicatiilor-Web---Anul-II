@@ -3,18 +3,14 @@
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
-/* i saw this in a tutorial
-i did not know there are variables in CSS
-i think its cool */
-
 :root{
-    --hue-neutral: 5f9;
-    --hue-wrong: 0;
-    --hue-correct: 145;
+    --hue-normal: 225;
+    --hue-gresit: 0;
+    --hue-corect: 145;
 }
 
 body {
-    --hue: var
+    --hue: var(--hue-normal);
     padding:0;
     margin:0;
     display:flex;
@@ -22,5 +18,79 @@ body {
     align-items: center;
     width: 100vw;
     height: 100vh;
+    background-color: hsl(var(--hue), 100%, 20%);
 }
 
+body.corect {
+    --hue: var(--hue-corect);
+}
+
+body.gresit {
+    --hue: var(--hue-gresit);
+}
+
+.container{
+    width: 800px;
+    max-width: 40%;
+    background-color: white;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.butoane-intrebare{
+    display:grid;
+    grid-template-columns: repeat(2, 2fr);
+    gap : 10px;
+    margin: 20px 0;
+}
+
+button{
+    width: 100%;
+    --hue: var(--hue-normal);
+    border: 1px solid hsl(var(--hue), 100%, 30%);
+    background-color: hsl(var(--hue), 50%, 80%);
+    border-radius: 5px;
+    padding: 5px 10px;
+    color:white;
+    outline: none; 
+}
+
+.controale{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-right: 5px;
+
+}
+
+button:hover {
+    border-color: black;
+}
+
+button.corect{
+    --hue:var(--hue-corect);
+    color: black;
+}
+
+button.gresit{
+    --hue:var(--hue-gresit);
+}
+
+.start-buton, .next-buton{
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 10px 20px;
+}
+
+.controale{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hide{
+    display:none;
+}
+
+.corect-count{
+    align-items: left;
+}
