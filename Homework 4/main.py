@@ -2,7 +2,7 @@ from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///catalog.db'  # Conectare la baza de date SQLite
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///catalog.db'
 db = SQLAlchemy(app)
 
 class Product(db.Model):
@@ -10,11 +10,10 @@ class Product(db.Model):
     name = db.Column(db.String(50), nullable=False)
     price = db.Column(db.Float, nullable=False)
 
-# Creare tabel în baza de date (rulează o singură dată)
-with app.app_context():
-    db.create_all()
+#with app.app_context():
+#    db.create_all()
 
-# Endpoint pentru adăugarea unui produs
+# Endpoint pentru adaugarea unui produs
 @app.route('/products', methods=['POST'])
 def add_product():
     data = request.get_json()
@@ -53,7 +52,7 @@ def update_product(product_id):
     db.session.commit()
     return jsonify({'message': 'Product updated successfully'})
 
-# Endpoint pentru ștergerea unui produs
+# Endpoint pentru stergerea unui produs
 @app.route('/products/<int:product_id>', methods=['DELETE'])
 def delete_product(product_id):
     product = Product.query.get(product_id)
