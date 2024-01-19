@@ -9,7 +9,26 @@ const getRandomPanel = () => {
 };
 
 const playSound = (panel) => {
-    const sound = document.getElementById('sound');
+    let soundId;
+
+    switch (panel) {
+        case topLeftPanel:
+            soundId = 'soundTopLeft';
+            break;
+        case topRightPanel:
+            soundId = 'soundTopRight';
+            break;
+        case bottomLeftPanel:
+            soundId = 'soundBottomLeft';
+            break;
+        case bottomRightPanel:
+            soundId = 'soundBottomRight';
+            break;
+        default:
+            soundId = 'sound';
+            break;
+    }
+    const sound = document.getElementById(soundId);
     sound.play();
 };
 
@@ -38,46 +57,46 @@ let currentIndex = 0;
 
 const panelClicked = (clickedPanel) => {
     if (!canClick) return;
-
+    
     const expectedPanel = sequences[currentIndex];
-
+    
     if (expectedPanel && clickedPanel.classList.contains(expectedPanel.className)) {
         currentIndex++;
-
+        
         if (currentIndex === sequences.length) {
-            // Player successfully completed the sequence, reset index and add a new random panel to the sequence
             currentIndex = 0;
             sequences.push(getRandomPanel());
-
-            // Flash the clicked panel when it matches the expected panel
+            
             flash(clickedPanel);
-
-            // Wait for a second before starting the new sequence
+            
             setTimeout(() => {
                 startFlashing();
             }, 2000);
         } else {
-            // Flash the clicked panel when it matches the expected panel
             flash(clickedPanel);
         }
     } else {
+        playSoundFail();
         alert('Game Over');
-        // Reset the game when the player guesses the sequence wrong
         sequences = [getRandomPanel()];
         currentIndex = 0;
         setTimeout(startFlashing, 500);
     }
 };
+const playSoundFail = () => {
+    const soundFail = document.getElementById('soundFail');
+    soundFail.play();
+};
 
 const startFlashing = async () => {
     canClick = false;
     const flashes = sequences.length; // Number of flashes for this round
-
+    
     for (let i = 0; i < flashes; i++) {
         await flash(sequences[i]);
         await new Promise(resolve => setTimeout(resolve, 500));
     }
-
+    
     canClick = true;
 };
 
