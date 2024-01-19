@@ -36,7 +36,7 @@ const flash = (panel) => {
     return new Promise((resolve, reject) => {
         if (panel) {
             panel.classList.add('active');
-            playSound(panel); // Play the sound for the panel
+            playSound(panel);
             setTimeout(() => {
                 panel.classList.remove('active');
                 setTimeout(() => {
@@ -90,7 +90,7 @@ const playSoundFail = () => {
 
 const startFlashing = async () => {
     canClick = false;
-    const flashes = sequences.length; // Number of flashes for this round
+    const flashes = sequences.length;
     
     for (let i = 0; i < flashes; i++) {
         await flash(sequences[i]);
@@ -100,5 +100,4 @@ const startFlashing = async () => {
     canClick = true;
 };
 
-// Start the initial flash after a delay
 setTimeout(startFlashing, 1000);
