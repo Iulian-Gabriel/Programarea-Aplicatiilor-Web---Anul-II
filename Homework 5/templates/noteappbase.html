@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/css/noteappstyle.css">
+    <title>Notes App</title>
+</head>
+<body>
+    <div id="app">
+        <div id="noteList">
+            <h2>Notes</h2>
+            <ul id="notes">
+            </ul>
+        </div>
+        <div id="noteEditor">
+            <h2>Edit</h2>
+            <div>
+                <textarea id="noteContent" placeholder="Enter note text..."></textarea>
+            </div>
+            <div id="selectedNoteID"></div>
+            <div>
+                <button id="createButton" onclick="createNote()">Create</button>
+                <button id="modifyButton" onclick="modifyNote()">Modify</button>
+                <button id="deleteButton" onclick="deleteNote()">Delete</button>
+                <button id="deselectButton" onclick="deselectAndClear()">Deselect</button>
+            </div>
+        </div>
+    </div>
+    <script src="static/scripts/noteappfunctionality.js"></script>
+</body>
+</html>
