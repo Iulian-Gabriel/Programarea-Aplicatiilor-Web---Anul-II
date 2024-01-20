@@ -9,6 +9,8 @@ class Note(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     content = db.Column(db.Text, nullable=False)
 
+#with app.app_context():
+#    db.create_all()
     
 @app.route('/')
 def index():
